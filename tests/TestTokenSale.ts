@@ -69,21 +69,20 @@ describe("NFT Shop", async () => {
   });
 
   describe("When a user burns an ERC20 at the Token contract", async () => {
-    const ETH_SENT = ethers.utils.parseEther("1");
-    const ERC20_TO_BURN = 0.5;
-    let totalERC20SupplyBefore: BigNumber;
-    let totalERC20SupplyAfter: BigNumber;
+    // const ETH_SENT = ethers.utils.parseEther("1");
+    // const ERC20_TO_BURN = 0.5;
+    // let totalERC20SupplyBefore: BigNumber;
+    // let totalERC20SupplyAfter: BigNumber;
 
     beforeEach(async () => {
-      const purchaseTx = await tokenSaleContract.purchaseTokens({
-        value: ETH_SENT,
-      });
-      await purchaseTx.wait();
-      totalERC20SupplyBefore = await paymentTokenContract.totalSupply();
-
-      const burnTx = await tokenSaleContract.burnTokens(ERC20_TO_BURN);
-      await burnTx.wait();
-      totalERC20SupplyAfter = await paymentTokenContract.totalSupply();
+      // const purchaseTx = await tokenSaleContract.purchaseTokens({
+      //   value: ETH_SENT,
+      // });
+      // await purchaseTx.wait();
+      // totalERC20SupplyBefore = await paymentTokenContract.totalSupply();
+      // const burnTx = await tokenSaleContract.burnTokens(ERC20_TO_BURN);
+      // await burnTx.wait();
+      // totalERC20SupplyAfter = await paymentTokenContract.totalSupply();
     });
 
     it("gives the correct amount of ETH", async () => {

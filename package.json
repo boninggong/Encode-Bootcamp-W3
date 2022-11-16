@@ -1,5 +1,5 @@
 {
-  "name": "hardhat-template",
+  "name": "encode-bootcamp-w3",
   "version": "0.0.3",
   "description": "",
   "main": "index.js",
@@ -8,7 +8,6 @@
     "test": "npx hardhat test",
     "clean": "rm -rf ./artifacts ./cache ./typechain "
   },
-  "author": "amanusk",
   "license": "MIT",
   "devDependencies": {
     "@ethersproject/abi": "^5.7.0",
