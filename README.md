@@ -11,8 +11,7 @@ Examples to interact with the contracts are:
 Mint 100 MTK ERC20 tokens:
 
 ```typescript
-yarn run ts-node scripts/CallERC20VotesFunctions.ts 0xA1D703118fe5b3C2dC00835d6169e448B7e8183C mint
-0x1337A77B69027114d6bCDCA81A617Eb0d5FAE75c 100
+yarn run ts-node scripts/CallERC20VotesFunctions.ts 0xA1D703118fe5b3C2dC00835d6169e448B7e8183C mint 0x1337A77B69027114d6bCDCA81A617Eb0d5FAE75c 100
 ```
 
 Delegate to activate votes:

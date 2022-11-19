@@ -1,6 +1,16 @@
-import { HardhatUserConfig } from "hardhat/config";
 import { NetworkUserConfig } from "hardhat/types";
+import { HardhatUserConfig } from "hardhat/config";
 import "@nomicfoundation/hardhat-toolbox";
+import "@typechain/hardhat";
+import "@nomiclabs/hardhat-waffle";
+import "@nomiclabs/hardhat-etherscan";
+import "@nomiclabs/hardhat-ethers";
+import "hardhat-gas-reporter";
+import "dotenv/config";
+import "hardhat-deploy";
+import "solidity-coverage";
+import fs from "fs-extra";
+import { ethers } from "ethers";
 
 import { config as dotenvConfig } from "dotenv";
 import { resolve } from "path";
@@ -20,6 +30,9 @@ const MNEMONIC = process.env.MNEMONIC || "";
 const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY || "";
 const INFURA_API_KEY = process.env.INFURA_API_KEY || "";
 const ALCHEMY_KEY = process.env.ALCHEMY_KEY || "";
+const GOERLI_PRIVATE_KEY1 = process.env.PRIVATE_KEY || "";
+const GOERLI_PRIVATE_KEY2 = process.env.PRIVATE_KEY_2 || "";
+const GOERLI_RPC_URL = process.env.GOERLI_RPC_URL!.toString() || "";
 
 function createTestnetConfig(network: keyof typeof chainIds): NetworkUserConfig {
   const url: string = "https://" + network + ".infura.io/v3/" + INFURA_API_KEY;
@@ -48,10 +61,24 @@ const config: HardhatUserConfig = {
       chainId: chainIds.hardhat,
     },
     mainnet: createTestnetConfig("mainnet"),
-    goerli: createTestnetConfig("goerli"),
+    goerli: {
+      url: GOERLI_RPC_URL,
+      accounts: [GOERLI_PRIVATE_KEY1, GOERLI_PRIVATE_KEY2],
+      chainId: chainIds.goerli,
+    },
     kovan: createTestnetConfig("kovan"),
     rinkeby: createTestnetConfig("rinkeby"),
     ropsten: createTestnetConfig("ropsten"),
+  },
+  namedAccounts: {
+    deployer: {
+      default: 0,
+      5: 0,
+    },
+    voter: {
+      default: 1,
+      5: 1,
+    },
   },
   solidity: {
     compilers: [
@@ -65,7 +92,7 @@ const config: HardhatUserConfig = {
   },
   gasReporter: {
     currency: "USD",
-    gasPrice: 100,
+    gasPrice: 20,
     enabled: process.env.REPORT_GAS ? true : false,
   },
   typechain: {
