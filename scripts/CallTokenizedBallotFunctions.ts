@@ -5,7 +5,7 @@ import * as dotenv from "dotenv";
 import { Ballot__factory } from "../typechain/factories/contracts/TokenizedBallot.sol";
 dotenv.config();
 
-// General script to call function on an ERC20Votes contract on Goerli
+// General script to call function on an Tokenized Ballot contract on Goerli
 async function main() {
   // Setup of network provider and signer
   const provider = ethers.getDefaultProvider("goerli");
