@@ -4,7 +4,9 @@ This repository contains my work as part of Week 3 within the [Encode Solidity B
 
 We have implemented a [votable ERC20 contract](https://github.com/boninggong/Encode-Bootcamp-W3/blob/main/contracts/ERC20Votes.sol) that can be used to vote on [tokenized ballots](https://github.com/boninggong/Encode-Bootcamp-W3/blob/main/contracts/TokenizedBallot.sol).
 
-[Typescript scripts](https://github.com/boninggong/Encode-Bootcamp-W3/tree/main/scripts) have been developed to interact with deployed instances on the Goerli network.
+[Deployment scripts](https://github.com/boninggong/Encode-Bootcamp-W3/tree/main/deploy) have been developed to deploy these on the Goerli network.
+
+[Function call scripts](https://github.com/boninggong/Encode-Bootcamp-W3/tree/main/scripts) have been developed to interact with deployed instances on the Goerli network.
 
 Examples to interact with the contracts are:
 

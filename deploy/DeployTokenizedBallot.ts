@@ -4,6 +4,7 @@ import { ethers } from "hardhat";
 
 export const PROPOSALS = ["Chocolate", "Vanilla", "Lemon", "Almond"];
 export const TARGET_BLOCK_NUMBER = 7990301;
+const ERC20_VOTES_ADDRESS = "0xA1D703118fe5b3C2dC00835d6169e448B7e8183C";
 
 function convertStringArrayToBytes32(array: string[]) {
   const bytes32Array = [];
@@ -18,13 +19,11 @@ const deployTokenizedBallot: DeployFunction = async function (hre: HardhatRuntim
   const { deploy, log } = deployments;
   const { deployer } = await getNamedAccounts();
 
-  const myERC20VotesAddress = "0xA1D703118fe5b3C2dC00835d6169e448B7e8183C";
-
   log(`The deployer address is: ${deployer}`);
 
   const chainId = network.config.chainId;
 
-  let args = [convertStringArrayToBytes32(PROPOSALS), myERC20VotesAddress, TARGET_BLOCK_NUMBER];
+  let args = [convertStringArrayToBytes32(PROPOSALS), ERC20_VOTES_ADDRESS, TARGET_BLOCK_NUMBER];
   log("Deploying TokenizedBallot and waiting for confirmations...");
   const tokenizedBallot = await deploy("Ballot", {
     from: deployer,

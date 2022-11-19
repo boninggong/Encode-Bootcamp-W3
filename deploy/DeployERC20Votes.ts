@@ -26,10 +26,10 @@ const deployERC20Votes: DeployFunction = async function (hre: HardhatRuntimeEnvi
     // verify the code
     await hre.run("verify:verify", {
       address: ERC20Votes.address,
-      constructorArguments: [],
+      constructorArguments: args,
     });
   }
 };
 
 export default deployERC20Votes;
-module.exports.tags = ["all", "test"];
+module.exports.tags = ["all", "ERC20Votes"];

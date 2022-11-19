@@ -20,10 +20,7 @@ const chainIds = {
   ganache: 1337,
   goerli: 5,
   hardhat: 31337,
-  kovan: 42,
   mainnet: 1,
-  rinkeby: 4,
-  ropsten: 3,
 };
 
 const MNEMONIC = process.env.MNEMONIC || "";
@@ -33,20 +30,6 @@ const ALCHEMY_KEY = process.env.ALCHEMY_KEY || "";
 const GOERLI_PRIVATE_KEY1 = process.env.PRIVATE_KEY || "";
 const GOERLI_PRIVATE_KEY2 = process.env.PRIVATE_KEY_2 || "";
 const GOERLI_RPC_URL = process.env.GOERLI_RPC_URL!.toString() || "";
-
-function createTestnetConfig(network: keyof typeof chainIds): NetworkUserConfig {
-  const url: string = "https://" + network + ".infura.io/v3/" + INFURA_API_KEY;
-  return {
-    accounts: {
-      count: 10,
-      initialIndex: 0,
-      mnemonic: MNEMONIC,
-      path: "m/44'/60'/0'/0",
-    },
-    chainId: chainIds[network],
-    url,
-  };
-}
 
 // You need to export an object to set up your config
 // Go to https://hardhat.org/config/ to learn more
@@ -60,15 +43,14 @@ const config: HardhatUserConfig = {
       },
       chainId: chainIds.hardhat,
     },
-    mainnet: createTestnetConfig("mainnet"),
+    mainnet: {
+      chainId: chainIds.mainnet,
+    },
     goerli: {
       url: GOERLI_RPC_URL,
       accounts: [GOERLI_PRIVATE_KEY1, GOERLI_PRIVATE_KEY2],
       chainId: chainIds.goerli,
     },
-    kovan: createTestnetConfig("kovan"),
-    rinkeby: createTestnetConfig("rinkeby"),
-    ropsten: createTestnetConfig("ropsten"),
   },
   namedAccounts: {
     deployer: {
