@@ -18,6 +18,10 @@ contract MyToken is ERC20, AccessControl, ERC20Permit, ERC20Votes {
         _mint(to, amount);
     }
 
+    function setRoleAdmin(bytes32 role, bytes32 adminRole) public onlyRole(DEFAULT_ADMIN_ROLE) {
+        _setRoleAdmin(role, adminRole);
+    }
+
     // The following functions are overrides required by Solidity.
 
     function _afterTokenTransfer(
