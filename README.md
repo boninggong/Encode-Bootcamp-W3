@@ -6,6 +6,18 @@ We have implemented a [votable ERC20 contract](https://github.com/boninggong/Enc
 
 [Deployment scripts](https://github.com/boninggong/Encode-Bootcamp-W3/tree/main/deploy) have been developed to deploy these on the Goerli network.
 
+Deploy ERC20Votes contract go Goerli:
+
+```typescript
+yarn hardhat deploy --network goerli --tags ERC20Votes
+```
+
+Deploy TokenizedBallot contract go Goerli:
+
+```typescript
+yarn hardhat deploy --network goerli --tags TokenizedBallot
+```
+
 [Function call scripts](https://github.com/boninggong/Encode-Bootcamp-W3/tree/main/scripts) have been developed to interact with deployed instances on the Goerli network.
 
 Examples to interact with the contracts are:
